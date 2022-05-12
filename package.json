@@ -1,6 +1,6 @@
 {
-  "name": "aurene-dashboard-next",
-  "version": "0.1.0",
+  "name": "aurene-dashboard",
+  "version": "0.7.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,6 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emotion/cache": "^11.7.1",
+    "@emotion/server": "^11.4.0",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@mui/material": "^5.7.0",
     "next": "12.1.6",
     "react": "18.1.0",
     "react-dom": "18.1.0"
