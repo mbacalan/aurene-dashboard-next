@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import { SessionProvider } from 'next-auth/react'
 import { CacheProvider, EmotionCache } from '@emotion/react'
 import { CssBaseline, ThemeProvider } from '@mui/material'
 import { theme, createEmotionCache } from '../utils'
@@ -11,13 +12,17 @@ interface IAppProps extends AppProps {
 }
 
 function MyApp({ Component, pageProps, emotionCache = clientSideEmotionCache }: IAppProps) {
+  const { session } = pageProps;
+
   return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+    <SessionProvider session={session}>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
+    </SessionProvider>
   )
 }
 
