@@ -3,28 +3,31 @@ import Head from 'next/head'
 import Button from '@mui/material/Button'
 import styles from '../styles/Home.module.css'
 import { GetServerSidePropsContext } from 'next'
+import { Avatar } from '@mui/material'
 
 function Home() {
-  const { status, data: session } = useSession()
+  const { data: session } = useSession()
 
   return (
-    <section className={styles.container}>
+    <section>
       <Head>
         <title>Aurene Dashboard</title>
       </Head>
 
-      <main className={styles.main}>
+      <main>
         <h1 className={styles.title}>
           Aurene Dashboard
         </h1>
 
-        <p>Status: {status}</p>
-
         {session ? (
           <>
-            <p>
-              Singed in as {session.user?.email}
-            </p>
+            <div className={styles.something}>
+              <Avatar alt="kek" src={session.user?.image as string} />
+
+              <span>
+                {session.user?.name}
+              </span>
+            </div>
 
             <Button variant="contained" color="primary" onClick={() => signOut()}>
               Sign Out
@@ -38,7 +41,7 @@ function Home() {
         }
       </main>
 
-      <footer className={styles.footer}>
+      <footer>
         Made by me :)
       </footer>
     </section>
