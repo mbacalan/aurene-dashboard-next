@@ -3,6 +3,7 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
 import { theme, createEmotionCache } from '../utils'
 import { Container } from '@mui/material';
+import ResponsiveAppBar from '../components/configuration/header';
 
 export default class MyDocument extends Document {
   render() {
@@ -25,6 +26,7 @@ export default class MyDocument extends Document {
         </Head>
         <body>
           <Container maxWidth="xl">
+            <ResponsiveAppBar />
             <Main />
           </Container>
           <NextScript />

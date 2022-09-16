@@ -3,7 +3,9 @@ import Head from 'next/head'
 import Button from '@mui/material/Button'
 import styles from '../styles/Home.module.css'
 import { GetServerSidePropsContext } from 'next'
-import { Avatar } from '@mui/material'
+import { Avatar, IconButton } from '@mui/material'
+import Nick from '../components/configuration/nick'
+import { ExitToApp } from '@mui/icons-material'
 
 function Home() {
   const { data: session } = useSession()
@@ -27,11 +29,13 @@ function Home() {
               <span>
                 {session.user?.name}
               </span>
+
+              <IconButton aria-label="logout" title="Logout" onClick={() => signOut()}>
+                <ExitToApp />
+              </IconButton>
             </div>
 
-            <Button variant="contained" color="primary" onClick={() => signOut()}>
-              Sign Out
-            </Button>
+            <Nick />
           </>
           ) : (
           <Button variant="contained" color="primary" onClick={() => signIn()}>
